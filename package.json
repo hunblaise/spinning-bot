@@ -2,9 +2,13 @@
   "name": "spinning-bot",
   "version": "1.0.0",
   "description": "Sends reminders",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hunblaise/spinning-bot.git"
   },
   "keywords": [
     "skype",
@@ -14,6 +18,7 @@
   "license": "ISC",
   "dependencies": {
     "botbuilder": "^3.9.0",
-    "restify": "^5.0.1"
+    "restify": "^5.0.1",
+    "cron": "^1.2.0"
   }
 }

@@ -53,3 +53,8 @@ bot.on('conversationUpdate', function (message) {
         .text('Goodbye ' + membersAdded));
   }
 });
+
+server.get(/.*/, restify.serveStatic({
+	'directory': '.',
+	'default': 'index.html'
+}));
