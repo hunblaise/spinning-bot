@@ -4,6 +4,12 @@ var cron = require('cron');
 
 // Setup restify server
 var server = restify.createServer();
+
+server.get(/.*/, restify.plugins.serveStatic({
+	'directory': '.',
+	'default': 'index.html'
+}));
+
 server.listen(process.env.port || process.env.PORT || 3978, function () {
   console.log('%s listening to %s', server.name, server.url);
 });
