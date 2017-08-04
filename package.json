@@ -1,0 +1,19 @@
+{
+  "name": "spinning-bot",
+  "version": "1.0.0",
+  "description": "Sends reminders",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "skype",
+    "bot"
+  ],
+  "author": "Balazs Hajdu",
+  "license": "ISC",
+  "dependencies": {
+    "botbuilder": "^3.9.0",
+    "restify": "^5.0.1"
+  }
+}
