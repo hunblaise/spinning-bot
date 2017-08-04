@@ -27,7 +27,7 @@ var bot = new builder.UniversalBot(connector);
 
 bot.dialog('/', function (session, args) {
 
-  var reminderJob = new cron.CronJob('*/45 * * * * *', function () {
+  var reminderJob = new cron.CronJob('00 00 10 * * 1-5', function () {
     session.send('Dudli reminder!');
   }, null, true);
 });
