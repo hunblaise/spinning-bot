@@ -32,6 +32,13 @@ bot.dialog('/', function (session, args) {
   }, null, true);
 });
 
+bot.customAction({
+  matches: /hello|hi|szia/gi,
+  onSelectAction: (session, args, next) => {
+    session.send('Hi ' + session.message.user.name + '!');
+  }
+});
+
 bot.on('conversationUpdate', function (message) {
   if (message.membersAdded && message.membersAdded.length > 0) {
     var membersAdded = message.membersAdded
