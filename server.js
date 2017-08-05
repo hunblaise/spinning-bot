@@ -33,7 +33,7 @@ bot.dialog('/', function (session, args) {
 });
 
 bot.customAction({
-  matches: /hello|hi|szia/gi,
+  matches: /(hello|hi|szia)!?/gi,
   onSelectAction: (session, args, next) => {
     session.send('Hi ' + session.message.user.name + '!');
   }
