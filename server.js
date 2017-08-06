@@ -27,9 +27,20 @@ var bot = new builder.UniversalBot(connector);
 
 bot.dialog('/', function (session, args) {
 
-  var reminderJob = new cron.CronJob('00 00 10 * * 1-5', function () {
+  var dailyReminder = new cron.CronJob('00 00 10 * * 1-5', function () {
     session.send('Dudli reminder!');
   }, null, true);
+
+  var trainingReminder = new cron.CronJob('	0 0 10 ? * TUE,THU *', function () {
+    session.send('Today is spin day!');
+  }, null, true);
+});
+
+bot.customAction({
+  matches: /dudli link/gi,
+  onSelectAction: (session, args, next) => {
+    session.send('https://epa.ms/spin');
+  }
 });
 
 bot.customAction({
@@ -37,7 +48,7 @@ bot.customAction({
   onSelectAction: (session, args, next) => {
     session.send('Hi ' + session.message.user.name + '!');
   }
-});
+})
 
 bot.on('conversationUpdate', function (message) {
   if (message.membersAdded && message.membersAdded.length > 0) {
