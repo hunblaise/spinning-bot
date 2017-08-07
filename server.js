@@ -1,6 +1,8 @@
 var restify = require('restify');
 var builder = require('botbuilder');
 var cron = require('cron');
+var util = require('util');
+var config = require('./config');
 
 // Setup restify server
 var server = restify.createServer();
@@ -28,25 +30,25 @@ var bot = new builder.UniversalBot(connector);
 bot.dialog('/', function (session, args) {
 
   var dailyReminder = new cron.CronJob('00 00 10 * * 1-5', function () {
-    session.send('Dudli reminder!');
-  }, null, true);
+    session.send(config.messages.doodle);
+  }, null, true, config.timeZone);
 
   var trainingReminder = new cron.CronJob('00 00 10 * * TUE,THU', function () {
-    session.send('Today is spin day!');
-  }, null, true);
+    session.send(config.messages.training);
+  }, null, true, config.timeZone);
 });
 
 bot.customAction({
-  matches: /dudli link.*$/i,
+  matches: /dudli link/i,
   onSelectAction: (session, args, next) => {
-    session.send('https://epa.ms/spin');
+    session.send(config.link.doodle);
   }
 });
 
 bot.customAction({
   matches: /(hello|hi|szia)(!?)/gi,
   onSelectAction: (session, args, next) => {
-    session.send('Hi ' + session.message.user.name + '!');
+    session.send(util.format(config.messages.welcome, session.message.user.name));
   }
 });
 
@@ -61,7 +63,7 @@ bot.on('conversationUpdate', function (message) {
 
       bot.send(new builder.Message()
         .address(message.address)
-        .text('Welcome ' + membersAdded));
+        .text(util.format(config.messages.welcome, membersAdded)));
   }
 
   if (message.membersRemoved && message.membersRemoved.length > 0) {
@@ -74,6 +76,6 @@ bot.on('conversationUpdate', function (message) {
 
       bot.send(new builder.Message()
         .address(message.address)
-        .text('Goodbye ' + membersAdded));
+        .text(config.messages.goodbye, membersRemoved));
   }
 });
