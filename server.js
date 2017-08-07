@@ -37,7 +37,7 @@ bot.dialog('/', function (session, args) {
 });
 
 bot.customAction({
-  matches: /dudli link$/i,
+  matches: /dudli link.*$/i,
   onSelectAction: (session, args, next) => {
     session.send('https://epa.ms/spin');
   }
