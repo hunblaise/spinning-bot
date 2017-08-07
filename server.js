@@ -31,13 +31,13 @@ bot.dialog('/', function (session, args) {
     session.send('Dudli reminder!');
   }, null, true);
 
-  var trainingReminder = new cron.CronJob('	0 0 10 ? * TUE,THU *', function () {
-    session.send('Today is spin day!');
-  }, null, true);
+  //var trainingReminder = new cron.CronJob('00 00 10 ? * TUE,THU', function () {
+  //  session.send('Today is spin day!');
+  //}, null, true);
 });
 
 bot.customAction({
-  matches: /dudli link/gi,
+  matches: /^dudli link$/i,
   onSelectAction: (session, args, next) => {
     session.send('https://epa.ms/spin');
   }
