@@ -33,7 +33,7 @@ bot.dialog('/', function (session, args) {
     session.send(config.messages.doodle);
   }, null, true, config.timeZone);
 
-  var trainingReminder = new cron.CronJob('00 00 10 * * TUE,THU', function () {
+  var trainingReminder = new cron.CronJob('00 00 11 * * TUE,THU', function () {
     session.send(config.messages.training);
   }, null, true, config.timeZone);
 });
