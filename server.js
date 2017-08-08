@@ -29,7 +29,7 @@ var bot = new builder.UniversalBot(connector);
 
 bot.dialog('/', function (session, args) {
 
-  var dailyReminder = new cron.CronJob('00 00 10 * * 1-5', function () {
+  var dailyReminder = new cron.CronJob('00 00 11 * * 1-5', function () {
     session.send(config.messages.doodle);
   }, null, true, config.timeZone);
 
