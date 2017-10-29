@@ -4,8 +4,8 @@ module.exports = {
   },
   timeZone: 'Europe/Budapest',
   messages: {
-    welcome: 'Hi %s',
-    goodbye: 'Goodbye %s',
+    welcome: 'Hi %s! (wave)',
+    goodbye: 'Goodbye :(',
     doodle: 'Dudli reminder!',
     training: 'Today is spin day!'
   }
