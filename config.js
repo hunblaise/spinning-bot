@@ -5,7 +5,7 @@ module.exports = {
   cron: {
     dailyReminderPattern: '00 00 11 * * 1-5',
     trainingReminderPattern: '00 00 11 * * TUE,THU',
-    testReminderPattern: '0 0/2 * 1/1 * ? *'
+    testReminderPattern: '* * * * * *'
   },
   timeZone: 'Europe/Budapest',
   messages: {
