@@ -20,5 +20,8 @@
     "botbuilder": "^3.11.0",
     "restify": "^5.0.1",
     "cron": "^1.2.0"
+  },
+  "engines": {
+    "node": "6.11.5"
   }
 }
