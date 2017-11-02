@@ -3,6 +3,7 @@
 var bot = require('./bot');
 var greeter = require('./actions/greeter');
 var reminder = require('./actions/reminder');
+var winston = require('winston');
 
 var savedAddress;
 bot.dialog('/', function (session) {
@@ -21,11 +22,16 @@ bot.dialog('greeting', require('./actions/greeterDialog'))
   });
 
 bot.on('conversationUpdate', function (message) {
+  winston.info('operation=conversationUpdate');
   greeter.greetOnUpdate(bot, message);
 });
 
 bot.on('contactRelationUpdate', function (message) {
+  winston.info('operation=contactRelationUpdate');
   savedAddress = message.address;
+  winston.debug('Updated savedAddress value', {
+    savedAddress: savedAddress
+  });
   reminder.prepareReminders(savedAddress, bot);
   reminder.startReminders();
 });
